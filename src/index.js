@@ -6,7 +6,7 @@ import store from './store'
 
 import './assets/styles/reset.css'
 import './assets/styles/border.css'
-
+import 'normalize.css'
 
 new Vue({
     el: '#app',

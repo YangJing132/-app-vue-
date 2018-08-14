@@ -42,7 +42,7 @@
 </template>
 
 <script>
-// import { mapGetters } from 'vuex'
+import { mapGetters } from 'vuex'
 
 export default {
   name: 'sub-nav',
@@ -54,9 +54,7 @@ export default {
   },
   data () {
     return {
-        currentUser:{
-            email:false
-        }
+      
     }
   },
   computed: {
@@ -67,7 +65,7 @@ export default {
       return this.currentUser.name ? this.currentUser.name : '请先登录'
     },
     // Map store/user state
-    // ...mapGetters(['currentUser'])
+    ...mapGetters(['currentUser'])
   },
   methods: {
     logout () {

@@ -1,9 +1,16 @@
+
+
 {
     "presets": [
-        "env"
+      ["env", { "modules": false }],
+      "stage-2"
     ],
-    "plugins": [
-        "transform-vue-jsx"
-    ]
-}
-// 使vue支持jsx语法
+    "plugins": ["transform-runtime"],
+    "comments": false,
+    "env": {
+      "test": {
+        "plugins": [ "istanbul" ]
+      }
+    }
+  }
+  
