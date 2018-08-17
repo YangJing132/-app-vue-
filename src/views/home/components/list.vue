@@ -40,8 +40,14 @@ export default {
   },
   filters: {
     subStr: function (value) {
-      let newVal = value.replace(/<.*?>/g, '')
-      return newVal.slice(0, 30)
+    
+      if(value === undefined){
+          return "";
+      }else{
+        let newVal = value.replace(/<.*?>/g, '')
+        return newVal.slice(0, 30)
+      }
+      
     }
   }
 }

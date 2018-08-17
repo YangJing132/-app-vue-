@@ -1,11 +1,97 @@
 <template>
-    <div class="book has-header">
-        books
-    </div>
+  <div class="movie-view has-header">
+    <scroller title="最受关注图书｜虚构类" type="hasCover" :items="novel"></scroller>
+    <scroller title="最受关注图书｜非虚构类" type="hasCover" :items="reality"></scroller>
+    <scroller title="豆瓣纸书" type="hasCover" :items="travel">
+      <div class="promItem" slot="promItem">
+        <img class="corver" src="src/assets/images/book_zw.jpg" alt="">
+        <div class="content">
+          <span class="price">¥ 68</span>
+          <p class="name">造物</p>
+          <p class="info">改变世界的万物图典，3000幅图里的发明与冒险</p>
+        </div>
+      </div>
+    </scroller>
+    <scroller title="发现好书" type="onlyString" :items="bookTags"></scroller>
+    <types></types>
+    <download-app></download-app>
+  </div>
 </template>
 
 <script>
+import { mapState } from 'vuex'
+
+import Scroller from '../movie/components/scroller'
+import Types from '../movie/components/types'
+import DownloadApp from '../detail/components/downloadApp'
+
 export default {
-    name:'book-view'
+  name: 'book-view',
+  components: { Scroller, Types, DownloadApp },
+  data () {
+    return {}
+  },
+  computed: {
+    // Getting Vuex State from store/modules/book
+    ...mapState({
+      novel: state => state.book.novel,
+      reality: state => state.book.reality,
+      travel: state => state.book.travel,
+      bookTags: state => state.book.bookTags
+    })
+  },
+  methods: {
+    // Dispatching getBook
+    getBook: function () {
+      this.$store.dispatch('getBook')
+    }
+  },
+  created: function created () {
+    // Getting books data on created
+    this.getBook()
+  }
 }
 </script>
+
+<style scoped>
+.promItem {
+  overflow: hidden;
+  margin: .16rem .18rem 0.08rem .16rem;
+}
+
+.corver {
+  float: left;
+  width: 1rem;
+  margin-right: .15rem;
+}
+
+.content {
+  margin-right: .1rem;
+}
+
+.name {
+  font-size: .2rem;
+  color: #494949;
+  margin: .1rem;
+  max-width: 100%;
+  line-height: .22rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  word-wrap: normal;
+}
+
+.price {
+  float: right;
+  color: #E76648;
+  font-size: .16rem;
+  line-height: .22rem;
+}
+
+.info {
+  font-size: .13rem;
+  font-weight: 300;
+  line-height: 1.5;
+  color: #9B9B9B;
+}
+</style>

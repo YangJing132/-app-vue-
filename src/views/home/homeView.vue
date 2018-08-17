@@ -37,7 +37,8 @@ export default {
       
       setTimeout(() => {
         this.loadMore()
-        this.$refs.infiniteLoading.$emit('$InfiniteLoading:loaded')
+        this.$refs.infiniteLoading.$emit('$InfiniteLoading:loaded');
+        // this.$refs.infiniteLoading.loaded()
       }, 1000)
     },
     // Dispatching Actions

@@ -1,15 +1,15 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 
-import Pages from '../views/pages/pages'//
+import PagesView from '../views/pages/pages'//
 import HomeView from '../views/home/homeView'//首页
 import MovieView from '../views/movie/movieView'//电影
 import BookView from '../views/book/bookView'//书籍
 import StatusView from '../views/status/statusView'//广播
 import GroupView from '../views/group/groupView'//小组
-// import SubjectView from '../views/SubjectView'
+import SubjectView from '../views/subject/subjectView'//电影详情
 import DetailView from '../views/detail/detailView'//详情
-// import SearchView from '../views/SearchView'
+import SearchView from '../views/search/searchView'//搜索结果
 import LoginView from '../views/login/loginView'//登录
 import RegisterView from '../views/register/registerView'//注册
 
@@ -23,7 +23,7 @@ export default new Router({
     },
     {
       path: '/pages',
-      component: Pages,
+      component: PagesView,
       children: [
         {
           path: '',
@@ -61,22 +61,22 @@ export default new Router({
         }
       ]
     },
-    // {
-    //   path: '/pages/:classify/subject/:id',
-    //   name: 'SubjectView',
-    //   components: {
-    //     default: PagesView,
-    //     subject: SubjectView
-    //   }
-    // },
-    // {
-    //   path: '/search',
-    //   name: 'SearchView',
-    //   components: {
-    //     default: PagesView,
-    //     search: SearchView
-    //   }
-    // },
+    {
+      path: '/pages/:classify/subject/:id',
+      name: 'SubjectView',
+      components: {
+        default: PagesView,
+        subject: SubjectView
+      }
+    },
+    {
+      path: '/search',
+      name: 'SearchView',
+      components: {
+        default: PagesView,
+        search: SearchView
+      }
+    },
     {
       path: '/login',
       name: 'LoginView',

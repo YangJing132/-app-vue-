@@ -6,7 +6,7 @@
             </router-link>
         </h1>
         <ul class="nav">
-            <router-link tag='li' v-for='item of list' :to="{path: item.name}" :style="{ color: item.color}" :class="[ item.class ]" :key='item.id'>
+            <router-link tag='li' v-for='item of list' :to="{name: item.name}" :style="{ color: item.color}" :class="[ item.class ]" :key='item.id'>
                 {{item.title}}
             </router-link>
         </ul>
@@ -26,28 +26,28 @@ export default {
                 {
                     id:1,
                     title:'电影',
-                    name:'movie',
+                    name:'MovieView',
                     class:'to-movies',
                     color:'#2384E8'
                 },
                 {
                     id:2,
                     title:'图书',
-                    name:'book',
+                    name:'BookView',
                     class:'to-book',
                     color:'#9F7860'
                 },
                 {
                     id:3,
                     title:'广播',
-                    name:'status',
+                    name:'StatusView',
                     class:'to-status',
                     color:'#E4A813'
                 },
                 {
                     id:4,
                     title:'小组',
-                    name:'group',
+                    name:'GroupView',
                     class:'to-group',
                     color:'#2AB8CC'
                 }
@@ -64,17 +64,6 @@ export default {
 
 <style lang="scss" scoped>
 .header-bar {
-  position: fixed;
-  left: 0;
-  right: 0;
-  top: 0;
-  z-index: 998;
-  display: flex;
-  align-items: center;
-  height: .48rem;
-  padding: 0 .18rem;
-  background: #fff;
-  border-bottom: 1px solid #f3f3f3;
   .title {
     flex: 1;
     max-width: .46rem;
